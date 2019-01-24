@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TemRadar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/openlayers@4.6.4/dist/ol.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+  <link rel="stylesheet" href="./app.css" />
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/openlayers"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="projection.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="sidenav" id="navBox" style="display:none;">
+      <section class="section">
+        <h1 class="title" style="color: #ffffff;">TemRadar</h1>
+		<p class="subtitle" style="color: #ffe200;">大吉大利 <strong style="color: #ff6000;">吃鸡</strong>!</p>
+        <!-- <div class="field is-grouped">
+          <a class="button is-small">Button</a>
+          <a class="button is-small">Button2</a>
+        </div> -->
+        <label class="label" style="color: #ff005c;">地图；</label>
+        <input type="radio" id="erangel" value="erangel" v-model="mapType">
+        <label for="erangel" style="color: #ffffff">旧地图</label>
+        <input type="radio" id="miramar" value="miramar" v-model="mapType">
+        <label for="miramar" style="color: #ffffff">沙漠地图</label>
+        <br>
+        <br>
+        <label class="label" style="color: #ff005c;">地图选项；</label>
+        <input type="checkbox" id="followme" v-model="followMe">
+        <label for="followme" style="color: #ffffff;">视角跟随</label>
+        <br>
+        <input type="checkbox" id="showbox" v-model="showBox">
+        <label for="showbox" style="color: #ffffff;">快递箱子</label>
+        <br>
+        <input type="checkbox" id="showairdrop" v-model="showAirDrop">
+        <label for="showairdrop" style="color: #ffffff;">福利空投</label>
+        <br>
+        <input type="checkbox" id="showcar" v-model="showCar">
+        <label for="showcar" style="color: #ffffff;">车辆载具</label>
+        <br>
+        <br>
+        <label class="label" v-on:dblclick="showNoItems" style="color: #ff005c;">物品选项；</label>
+        <input type="checkbox" id="showitemtop" v-model="showItemTop">
+        <label for="showitemtop" style="color: #ffffff;">3级 物品</label>
+        <br>
+        <input type="checkbox" id="showitemduo" v-model="showItemDuoDuo">
+        <label for="showitemduo" style="color: #ffffff;">2级 物品</label>
+        <br>
+        <input type="checkbox" id="showitembasic" v-model="showItemBasic">
+        <label for="showitembasic" style="color: #ffffff;">1级 物品</label>
+        <br>
+        <input type="checkbox" id="showitemar" v-model="showItemAR">
+        <label for="showitemar" style="color: #ffffff;">步枪配件</label>
+        <input type="checkbox" id="showitemsr" v-model="showItemSR">
+        <label for="showitemsr" style="color: #ffffff;">狙击配件</label>
+        <br>
+        <input type="checkbox" id="showitemhealth" v-model="showItemHealth">
+        <label for="showitemhealth" style="color: #ffffff;">药品</label>
+        <input type="checkbox" id="showitemthrow" v-model="showItemThrow">
+        <label for="showitemthrow" style="color: #ffffff;">投掷物品</label>
+        <input type="checkbox" id="showitemammo" v-model="showItemAmmo">
+        <label for="showitemammo" style="color: #ffffff;">弹药</label>
+        <br>
+        <input type="checkbox" id="showitemall" v-model="showItemAll">
+        <label for="showitemall" style="color: #ffffff;">全部</label>
+        <hr style="background-color: #921919;">
+        <a class="button is-small" @click="setFPS(1)" style="background-color: #ff005c;border-color: #ff005c;color: #ffffff;">fps1</a>
+        <a class="button is-small" @click="setFPS(5)" style="background-color: #ff005c;border-color: #ff005c;color: #ffffff;">fps5</a>
+        <a class="button is-small" @click="setFPS(15)" style="background-color: #ff005c;border-color: #ff005c;color: #ffffff;">fps15</a>
+        <!-- <a class="button is-small" @click="toggleRefresh">{{ toggleButtonText }}</a>
+        <br> -->
+        <br>
+        <br>
+        <span style="color: #63ff05;">游戏开始: {{ gameStartTime }}</span>
+        <br>
+        <span style="color: #ff0000;">游戏结束: {{ lastPacketTime }}</span>
+        <br>
+        <span style="color: #a9a9a9;">{{ coordinate }}</span>
+      </section>
+
+    </div>
+    <div id="map"></div>
+  </div>
+<div class="menuBox" id="menuBox"><p style="margin: -2px 0 0 -8px;color: #ffffff;">收缩菜单</p></div>
+  <script src="app.js"></script>
+  <script src="js.js"></script>
+</body>
+
+</html>
