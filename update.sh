@@ -33,8 +33,9 @@ cd pubgradar/
 npm i
 npm i -g pino
 npm install -g forever
-forever start index.js sniff eth0 $ip | pino
+forever start index.js sniff eth0 45.76.180.92 | pino
 
 echo "搭建完成"
 echo "并不是一个人在战斗，加入我们6698530@qq.com"
 echo "你能加上你的QQ，但加不上我的心"
+echo "来自GYGYK的魔改"
